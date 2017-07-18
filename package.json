@@ -1,7 +1,7 @@
 {
   "name": "newschart",
   "version": "0.0.0",
-  "description": "Simple charting tool for news rooms",
+  "description": "Simple charting tool for newsrooms",
   "main": "dist/lib/NewsChart.js",
   "config": {
     "full_name": "NewsChart",
