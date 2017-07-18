@@ -1,0 +1,42 @@
+{
+  "name": "newschart",
+  "version": "0.0.0",
+  "description": "Simple charting tool for news rooms",
+  "main": "dist/lib/NewsChart.js",
+  "config": {
+    "full_name": "NewsChart",
+    "module_name": "NewsChart",
+    "year_launched": "2017",
+    "template_type": "lib",
+    "dev_host": "local.designbycy.com",
+    "dev_port": "9000"
+  },
+  "scripts": {
+    "dev": "npm run clean && NODE_ENV=development WEBPACK_TEMPLATE_TYPE=${npm_package_config_template_type} WEBPACK_TEMPLATE_COMPRESS=false webpack-dev-server --config ./build/webpack.config.js --open",
+    "dist": "npm run clean && NODE_ENV=production WEBPACK_TEMPLATE_TYPE=${npm_package_config_template_type} npm run dist:${npm_package_config_template_type}",
+    "dist:app": "npm run dist:compressed",
+    "dist:lib": "npm run dist:uncompressed && npm run dist:compressed",
+    "dist:uncompressed": "WEBPACK_TEMPLATE_COMPRESS=false webpack --config ./build/webpack.config.js",
+    "dist:compressed": "WEBPACK_TEMPLATE_COMPRESS=true webpack --config ./build/webpack.config.js",
+    "clean": "rimraf dev dist",
+    "serve": "http-server dist/${npm_package_config_template_type} -a ${npm_package_config_dev_host} -p ${npm_package_config_dev_port} -o",
+    "inst": "npm run inst:${npm_package_config_template_type}",
+    "inst:app": "npm run inst:save && npm run inst:save_dev",
+    "inst:lib": "npm run inst:save_dev",
+    "inst:save": "npm i lodash mithril normalize.css --save",
+    "inst:save_dev": "npm i babel-core babel-loader babel-plugin-transform-react-jsx babel-plugin-transform-runtime babel-polyfill babel-preset-es2015 css-loader file-loader handlebars handlebars-loader html-webpack-plugin http-server node-sass postcss postcss-cssnext postcss-loader rimraf sass-loader style-loader url-loader webpack webpack-dev-server --save-dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cy-park/NewsChart.git"
+  },
+  "keywords": [],
+  "author": "Chan Young Park (http://chanyoungpark.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cy-park/NewsChart/issues"
+  },
+  "private": "true",
+  "devDependencies": { },
+  "dependencies": { }
+}
